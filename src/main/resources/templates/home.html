@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Homepage</title>
+    <style>
+        .info{
+            position: absolute;
+            top: 0pt;
+            left: 450pt;
+            font-size: xxx-large;
+        }
+    </style>
+</head>
+<body>
+<div class="info">
+<p text-align="center" th:text= "${login.getName()}"></p>
+</div>
+</body>
+</html>
