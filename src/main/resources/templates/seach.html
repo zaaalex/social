@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="seachBlock">
+  <form th:action="@{/user/seach}" th:object="${user}" th:method="post">
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th></th>
+      </tr>
+      </thead>
+      <td>
+        <input style="height:15px;width:137px" type="text" th:field="*{name}">
+      </td>
+      <td>
+        <button type="submit">delete</button>
+      </td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>

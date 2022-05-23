@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.security.Principal;
@@ -26,9 +27,25 @@ public class UserController {
         return "home";
     }
 
+    @PostMapping(value="seach")
+    public String seach(Model model, String name){
+        if(userService.seachUser(name)!=null) {
+            model.addAttribute("user", userService.seachUser(name));
+            return "redirect:/user/userseach";
+        }
+        else return "redirect:/user/home";
+        //переделать на страницу *пользователь не найден*
+    }
+
+    @GetMapping(value="seachh")
+    public String seachh(Model model, Principal principal){
+        updateLoginTime(model, principal);
+        return "seachh";
+    }
+
     void updateLoginTime(Model model, Principal principal){
         Login login = new Login(principal.getName());
         model.addAttribute("login", login);
-        userService.updateUser(login.getName(), new Date());
+        userService.updateDataAuthorization(login.getName(), new Date());
     }
 }

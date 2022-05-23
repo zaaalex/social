@@ -2,7 +2,7 @@ package FiveGroup.social.rest.controller;
 
 import FiveGroup.social.database.user.UserService;
 import FiveGroup.social.dto.Login;
-import FiveGroup.social.dto.user.User;
+import FiveGroup.social.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,4 +29,6 @@ public class AdminController {
         model.addAttribute("users",  userService.getUsers());
         return "userlist";
     }
+
+
 }

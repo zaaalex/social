@@ -1,11 +1,15 @@
 package FiveGroup.social.database.user;
 
+import FiveGroup.social.database.post.PostEntity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -25,5 +29,24 @@ public class UserEntity {
     @Schema(description = "date of last authorization user", required = true)
     @JsonProperty("lastAuthorization")
     private String lastAuthorization;
+
+    @Setter(AccessLevel.PROTECTED)
+    @ToString.Exclude
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = false, cascade = CascadeType.ALL)
+    private List<PostEntity> posts;
+
+    @Null
+    @ElementCollection
+    @Setter(AccessLevel.PROTECTED)
+    @Schema(description = "list subscribers", required = false)
+    @JsonProperty("subscribers")
+    private Set<String> subscribers;
+
+    @Null
+    @ElementCollection
+    @Setter(AccessLevel.PROTECTED)
+    @Schema(description = "list subscriptions", required = false)
+    @JsonProperty("subscriptions")
+    private Set<String> subscriptions;
 }
 
