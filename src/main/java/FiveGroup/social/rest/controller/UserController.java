@@ -41,7 +41,7 @@ public class UserController {
         return "home";
     }
 
-    @GetMapping(value="anotherUser/{name}")
+    @GetMapping(value="/{name}")
     public String anotherUser(Model model, Principal principal, @PathVariable String name){
         updateLoginTime(model, principal);
         model.addAttribute("anotherPosts", postService.getPosts(name));

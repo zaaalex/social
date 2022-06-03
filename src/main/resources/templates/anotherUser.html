@@ -35,7 +35,7 @@
             <th>Content</th>
         </tr>
         </thead>
-        <tbody th:each="post, iStat : ${posts}">
+        <tbody th:each="post, iStat : ${anotherPosts}">
         <tr>
             <td th:text="${post.getId()}"></td>
             <td th:text="${post.getTime()}"></td>
