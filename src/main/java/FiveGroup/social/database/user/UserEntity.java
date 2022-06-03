@@ -34,19 +34,5 @@ public class UserEntity {
     @ToString.Exclude
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, orphanRemoval = false, cascade = CascadeType.ALL)
     private List<PostEntity> posts;
-
-    @Null
-    @ElementCollection
-    @Setter(AccessLevel.PROTECTED)
-    @Schema(description = "list subscribers", required = false)
-    @JsonProperty("subscribers")
-    private Set<String> subscribers;
-
-    @Null
-    @ElementCollection
-    @Setter(AccessLevel.PROTECTED)
-    @Schema(description = "list subscriptions", required = false)
-    @JsonProperty("subscriptions")
-    private Set<String> subscriptions;
 }
 

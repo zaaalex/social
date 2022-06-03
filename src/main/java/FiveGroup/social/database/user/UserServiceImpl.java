@@ -35,14 +35,11 @@ public class UserServiceImpl implements UserService{
             User user=new User();
             user.setName(c.getName());
             user.setLastAuthorization(c.getLastAuthorization());
-            user.setSubscribers(c.getSubscribers());
-            user.setSubscriptions(c.getSubscriptions());
 
             List <Post> postList = c.getPosts().stream().map(
                     PostEntity -> {
                         Post post=new Post();
                         post.setId(PostEntity.getId());
-                        post.setImage(PostEntity.getImage());
                         post.setContent(PostEntity.getContent());
                         post.setTime(PostEntity.getTime());
                         return post;
@@ -55,38 +52,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public UserEntity seachUser(String name) {
-        if (userRepository.existsByName(name)) return userRepository.findUserEntityByName(name);
-        else return null;
-    }
-
-    @Override
-    public void subscribe(String username, String subscribeName) throws UserNotFoundException{
-        if (!userRepository.existsByName(username) || !userRepository.existsByName(subscribeName)) {
-            throw new UserNotFoundException("Username or subscribeName isn't found");
-        }
-        else {
-            UserEntity userEntity = userRepository.findUserEntityByName(username);
-            Set<String> subscribes = userEntity.getSubscribers();
-            subscribes.add(subscribeName);
-            userEntity.setSubscribers(subscribes);
-
-            userRepository.saveAndFlush(userEntity);
-        }
-    }
-
-    @Override
-    public void unsubscribe(String username, String unsubscribeName) throws UserNotFoundException{
-        if (!userRepository.existsByName(username) || !userRepository.existsByName(unsubscribeName)) {
-            throw new UserNotFoundException("Username or unsubscribeName isn't found");
-        }
-        else {
-            UserEntity userEntity = userRepository.findUserEntityByName(username);
-            Set<String> subscribes = userEntity.getSubscribers();
-            subscribes.remove(unsubscribeName);
-            userEntity.setSubscribers(subscribes);
-
-            userRepository.saveAndFlush(userEntity);
-        }
+    public boolean seachUser(String name) {
+       return userRepository.existsByName(name);
     }
 }

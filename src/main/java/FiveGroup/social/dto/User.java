@@ -28,14 +28,4 @@ public class User {
     @Schema(description = "list posts", required = false)
     @JsonProperty("posts")
     private List<Post> posts;
-
-    @Null
-    @Schema(description = "list subscribers", required = false)
-    @JsonProperty("subscribers")
-    private Set<String> subscribers;
-
-    @Null
-    @Schema(description = "list subscriptions", required = false)
-    @JsonProperty("subscriptions")
-    private Set<String> subscriptions;
 }

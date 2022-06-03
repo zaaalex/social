@@ -23,11 +23,6 @@ public class Post {
     private String content;
 
     @NotNull
-    @Schema(description = "Image content in post", required = true)
-    @JsonProperty("image")
-    private String image;
-
-    @NotNull
     @Schema(description = "Time of publications", required = true)
     @JsonProperty("time")
     private String time;

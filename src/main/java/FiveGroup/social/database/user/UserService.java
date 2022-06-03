@@ -9,7 +9,5 @@ import java.util.List;
 public interface UserService {
     void updateDataAuthorization(String username, Date date);
     List<User> getUsers();
-    UserEntity seachUser (String username);
-    void subscribe(String username, String subscribeName) throws UserNotFoundException;
-    void unsubscribe(String username, String unsubscribeName) throws UserNotFoundException;
+    boolean seachUser (String username);
 }

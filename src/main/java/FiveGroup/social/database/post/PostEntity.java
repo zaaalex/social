@@ -28,12 +28,6 @@ public class PostEntity {
     private String content;
 
     @NotNull
-    @Setter (AccessLevel.PROTECTED)
-    @Schema(description = "Image in post", required = true)
-    @JsonProperty("image")
-    private String image;
-
-    @NotNull
     @Schema(description = "Time of publications", required = true)
     @JsonProperty("time")
     private String time;

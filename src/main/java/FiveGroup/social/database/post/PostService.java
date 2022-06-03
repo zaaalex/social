@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface PostService {
     void addPost(Post post, String username) throws UserNotFoundException;
-    void deletePost(long id) throws PostNotFoundException;
-    List<Post> getPosts(String username) throws UserNotFoundException;
+    void deletePost(long id, String username) throws PostNotFoundException;
+    List<Post> getPosts(String username);
 }

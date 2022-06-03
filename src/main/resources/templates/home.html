@@ -10,11 +10,67 @@
             left: 450pt;
             font-size: xxx-large;
         }
+        .subscribe{
+            position: absolute;
+            top: 50pt;
+            left: 20pt;
+        }
+        .unsubscribe{
+            position: absolute;
+            top: 200pt;
+            left: 20pt;
+        }
+        .allBlock{
+            position: absolute;
+            font-size: large;
+            top: 100px;
+            left: 300px;
+        }
     </style>
 </head>
 <body>
+<div>
+    <p text-align="center"><a href="post">POST</a></p>
+</div>
 <div class="info">
 <p text-align="center" th:text= "${login.getName()}"></p>
 </div>
+<div class="subscribe">
+    <form th:action="@{/user/subscribe}" th:object="${login}" th:method="post">
+        <fieldset>
+            <p>Name:</p>
+            <p> <input type="text" th:field="*{name}"></p>
+        </fieldset>
+
+        <button style="height:20px;width:205px" type="submit">subscribe</button>
+    </form>
+</div>
+<div class="unsubscribe">
+    <form th:action="@{/user/unsubscribe}" th:object="${login}" th:method="post">
+        <fieldset>
+            <p>Name:</p>
+            <p> <input type="text" th:field="*{name}"></p>
+        </fieldset>
+
+        <button style="height:20px;width:205px" type="submit">unsubscribe</button>
+    </form>
+</div>
+<div class="allBlock">
+    <table>
+        <thead>
+        <tr>
+            <th>Subscriptions</th>
+        </tr>
+        </thead>
+        <tbody th:each="subscription, iStat : ${subscriptions}">
+        <tr>
+            <td th:text="${subscription.getSubscription()}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+    <br/>
+</div>
+
 </body>
 </html>

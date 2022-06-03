@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Homepage</title>
+    <style>
+        .addBlock{
+            position: absolute;
+            top: 100px;
+            left:50px;
+        }
+        .allBlock{
+            position: absolute;
+            font-size: large;
+            top: 100px;
+            left: 300px;
+        }
+        .deleteBlock{
+            position: absolute;
+            top: 400px;
+            left: 50px;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <p text-align="center"><a href="home">HOME</a></p>
+</div>
+<div class="addBlock">
+    <form th:action="@{/user/addPost}" th:object="${post}" th:method="post">
+        <fieldset>
+            <p>Text:</p>
+            <p> <input type="text" th:field="*{content}"></p>
+        </fieldset>
+
+        <button style="height:20px;width:205px" type="submit">create</button>
+
+    </form>
+</div>
+<div class="allBlock">
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Time</th>
+            <th>Content</th>
+        </tr>
+        </thead>
+        <tbody th:each="post, iStat : ${posts}">
+        <tr>
+            <td th:text="${post.getId()}"></td>
+            <td th:text="${post.getTime()}"></td>
+            <td th:text="${post.getContent()}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+    <br/>
+</div>
+<div class="deleteBlock">
+    <form th:action="@{/user/deletePost}" th:object="${post}" th:method="post">
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th></th>
+            </tr>
+            </thead>
+            <td>
+                <input style="height:15px;width:137px" type="number" th:field="*{id}">
+            </td>
+            <td>
+                <button type="submit">delete</button>
+            </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
