@@ -3,7 +3,6 @@ package FiveGroup.social.rest.controller;
 import FiveGroup.social.database.post.PostEntity;
 import FiveGroup.social.database.post.PostService;
 import FiveGroup.social.database.subscription.SubscriptionService;
-import FiveGroup.social.database.user.UserEntity;
 import FiveGroup.social.database.user.UserService;
 import FiveGroup.social.dto.Login;
 import FiveGroup.social.dto.Post;
@@ -37,6 +36,7 @@ public class UserController {
     @GetMapping(value="home")
     public String home(Model model, Principal principal){
         updateLoginTime(model, principal);
+        model.addAttribute("scroll", postService.scroll(principal.getName()));
         model.addAttribute("subscriptions", subscriptionService.findSubscribers(principal.getName()));
         return "home";
     }

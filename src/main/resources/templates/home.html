@@ -26,6 +26,12 @@
             top: 100px;
             left: 300px;
         }
+        .scrollBlock{
+            position: absolute;
+            font-size: large;
+            top: 500px;
+            left: 400px;
+        }
     </style>
 </head>
 <body>
@@ -71,6 +77,27 @@
     <br/>
     <br/>
 </div>
+<div class="scrollBlock">
+    <table>
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Time</th>
+            <th>Content</th>
 
+        </tr>
+        </thead>
+        <tbody th:each="pos, iStat : ${scroll}">
+        <tr>
+            <td th:text="${pos.getId()}"></td>
+            <td th:text="${pos.getTime()}"></td>
+            <td th:text="${pos.getContent()}"></td>
+
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+    <br/>
+</div>
 </body>
 </html>

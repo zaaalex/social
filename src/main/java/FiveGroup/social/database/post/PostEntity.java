@@ -28,6 +28,7 @@ public class PostEntity {
     private String content;
 
     @NotNull
+    @Setter (AccessLevel.PROTECTED)
     @Schema(description = "Time of publications", required = true)
     @JsonProperty("time")
     private String time;
